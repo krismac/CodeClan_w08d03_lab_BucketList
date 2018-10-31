@@ -11,9 +11,15 @@ List.prototype.bindEvents = function () {
     this.deleteList(evt.detail);
   });
 
+
   PubSub.subscribe('ListView:submitted', (evt) =>{
     this.postListing(evt.detail);
   })
+
+  PubSub.subscribe('ListView:update', (evt) =>{
+    this.updateListing(evt.detail);
+  })
+
 };
 
 List.prototype.postListing = function (listing){
@@ -33,8 +39,16 @@ List.prototype.getData = function () {
     .catch(console.error);
 };
 
-List.prototype.deleteListing = function (listingId){
+List.prototype.deleteList = function (listingId){
   this.request.delete(listingId)
+  .then((listings) => {
+    PubSub.publish('Listings:data-loaded', listings);
+  })
+  .catch(console.error);
+};
+
+List.prototype.editList = function (listingId){
+  this.request.update(listingId)
   .then((listings) => {
     PubSub.publish('Listings:data-loaded', listings);
   })

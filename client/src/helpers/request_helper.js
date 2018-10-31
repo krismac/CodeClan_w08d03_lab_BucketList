@@ -23,4 +23,12 @@ RequestHelper.prototype.delete = function (id) {
     .then((response) => response.json());
 };
 
+RequestHelper.prototype.update = function (id) {
+  return fetch(`${this.url}/${id}`, {
+    method: 'UPDATE'
+  })
+    .then((response) => response.json());
+};
+
+
 module.exports = RequestHelper;

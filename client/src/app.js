@@ -3,11 +3,11 @@ const ListingGridView = require('./views/list_grid_view.js');
 const BucketList = require('./models/bucketlist.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const listingsForm = document.querySelector('form#listings-form');
+  const listingsForm = document.querySelector('form#listing-form"');
   const listingsFormView = new ListingFormView(listingsForm);
   listingsFormView.bindEvents();
 
-  const listingsContainer = document.querySelector('div#listings');
+  const listingsContainer = document.querySelector('div#listings-view');
   const listingsGridView = new ListingGridView(listingsContainer);
   listingsGridView.bindEvents();
 

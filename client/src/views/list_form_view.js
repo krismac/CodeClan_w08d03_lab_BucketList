@@ -17,5 +17,19 @@ ListingFormView.prototype.handleSubmit = function (evt) {
   evt.target.reset();
 };
 
+ListingFormView.prototype.handleEdit = function (evt) {
+  evt.preventDefault();
+  const editListing = this.updateListing(evt.target);
+  PubSub.publish('ListView:edit', editListing);
+  evt.target.reset();
+};
+
+ListingFormView.prototype.createListing = function (form) {
+  const newListing = {
+    item: form.item.value,
+    status: form.status.value
+  }
+  return newListing;
+};
 
 module.exports = ListingFormView
