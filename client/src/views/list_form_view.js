@@ -10,10 +10,12 @@ ListingFormView.prototype.bindEvents = function () {
   });
 };
 
-
 ListingFormView.prototype.handleSubmit = function (evt) {
   evt.preventDefault();
-  const newSighting = this.createListing(evt.target);
+  const newListing = this.createListing(evt.target);
   PubSub.publish('ListView:submitted', newListing);
   evt.target.reset();
 };
+
+
+module.exports = ListingFormView

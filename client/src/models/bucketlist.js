@@ -36,7 +36,7 @@ List.prototype.getData = function () {
 List.prototype.deleteListing = function (listingId){
   this.request.delete(listingId)
   .then((listings) => {
-    PubSub.publish('Listing:data-loaded', listings);
+    PubSub.publish('Listings:data-loaded', listings);
   })
   .catch(console.error);
 };

@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const listingsContainer = document.querySelector('div#listings');
   const listingsGridView = new ListingGridView(listingsContainer);
-  sightingsGridView.bindEvents();
+  listingsGridView.bindEvents();
 
-  const listings = new BucketList();
+  const url = "http://localhost:3000/api/list";
+  const listings = new BucketList(url);
   listings.bindEvents();
   listings.getData();
 });
